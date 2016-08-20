@@ -2,7 +2,7 @@
  * @author zhaoguo
  */
 define([
-    '../lib/d3v3min'
+    'd3'
 ], function(d3) {
     window.toUTF8 = function(str) {
         if( typeof( str ) !== "string" ) {

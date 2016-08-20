@@ -9,7 +9,8 @@ require.config({
      }
      */
     paths: {
-        'jquery': '../../asset/lib/jquery/jquery-1.10.2.min'
+        'jquery': '../../asset/lib/jquery/jquery-1.10.2.min',
+        'd3': '../../asset/lib/d3/d3v3min'
     }
 });
 require(['index',], function(index) {
