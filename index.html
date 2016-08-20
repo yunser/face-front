@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=360,user-scalable=no">
+    <title>脸萌</title>
+    <link rel="stylesheet" href="asset/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="asset/css/index.css">
+</head>
+<body>
+<div id="frame">
+    <div class="preview-box">
+        <div class="preview-main">
+            <div id="svgBg"></div>
+            <div id="svgContainer">
+                <div id="bg"></div>
+                <div id="hairBack" class="frame"></div>
+                <div id="body" class="frame"></div>
+                <div id="cloth" class="frame"></div>
+                <div id="face" class="frame"></div>
+                <div id="eyebrow" class="frame"></div>
+                <div id="eye" class="frame"></div>
+                <div id="feature" class="frame"></div>
+                <div id="mouth" class="frame"></div>
+                <div id="nose" class="frame"></div>
+                <div id="hair" class="frame"></div>
+                <div id="express" class="frame"></div>
+                <div id="glass" class="frame"></div>
+                <div id="hat" class="frame"></div>
+                <div id="hobby" class="frame"></div>
+                <div id="bdBubble" class="frame"></div>
+                <div id="bubble" class="frame"></div>
+                <div id="bubbleFont" class="frame"></div>
+            </div>
+            <div id="userIconFrame" style="position:absolute;left:10px;top:10px;"></div>
+        </div>
+    </div>
+    <div class="menu">
+        <div id="menuFrame" class="menu-items">
+
+        </div>
+    </div>
+    <div id="list">
+        <table border="1" cellspacing="0" cellpadding="1" border="1" bordercolor="#FFF">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        <a id="change-sex" class="footer-btn" href="javascript:void(0);">更改性别</a>
+        <form id="svg-form" class="svg-form" action="http://139.129.8.246/tool/icon/test" method="post" enctype="multipart/form-data">
+            <textarea id="svg-form-code" name="svg_code"></textarea>
+        </form>
+        <a id="finish" class="footer-btn" href="javascript:void(0);">完成并下载</a>
+
+    </div>
+</div>
+<script src="asset/lib/jquery/jquery-1.10.2.min.js"></script>
+<script src="asset/lib/require/require.js" defer async="true"></script>
+<script src="asset/lib/require/require.js" data-main="asset/js/main"></script>
+</body>
+</html>
