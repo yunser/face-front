@@ -9,6 +9,10 @@
 
 ![主界面](res/screenshot/index.jpg)
 
+## 示例
+
+[Demo](https://cjhgit.github.io/face/)
+
 ## 协议
 
 MIT
