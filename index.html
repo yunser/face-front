@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta id="viewport" name="viewport" content="width=360,user-scalable=no">
     <title>脸萌</title>
-    <link rel="stylesheet" href="asset/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="asset/lib/eui/eui-reset.min.css">
     <link rel="stylesheet" href="asset/css/index.css">
 </head>
 <body>
@@ -61,14 +61,42 @@
     </div>
     <div class="footer">
         <a id="change-sex" class="footer-btn" href="javascript:void(0);">更改性别</a>
-        <form id="svg-form" class="svg-form" action="http://139.129.8.246/tool/icon/test" method="post" enctype="multipart/form-data">
-            <textarea id="svg-form-code" name="svg_code"></textarea>
-        </form>
-        <a id="finish" class="footer-btn" href="javascript:void(0);">完成并下载</a>
+        <a id="finish" class="footer-btn" href="javascript:void(0);">完成</a>
 
     </div>
 </div>
-<script src="asset/lib/jquery/jquery-1.10.2.min.js"></script>
+<svg id="svg" class="svg" viewBox="0 0 640 640" width="220" height="220" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+    <g id="bg2"></g>
+    <g id="hairBack2" class="frame"></g>
+    <g id="body2" class="frame"></g>
+    <g id="cloth2" class="frame"></g>
+    <g id="face2" class="frame"></g>
+    <g id="eyebrow2" class="frame"></g>
+    <g id="eye2" class="frame"></g>
+    <g id="feature2" class="frame"></g>
+    <g id="mouth2" class="frame"></g>
+    <g id="nose2" class="frame"></g>
+    <g id="hair2" class="frame"></g>
+    <g id="express2" class="frame"></g>
+    <g id="glass2" class="frame"></g>
+    <g id="hat2" class="frame"></g>
+    <g id="hobby2" class="frame"></g>
+    <g id="bdBubble2" class="frame"></g>
+    <g id="bubble2" class="frame"></g>
+    <g id="bubbleFont2" class="frame"></g>
+
+</svg>
+<div id="result-box" class="result-box">
+    <i id="close" class="icon-close">返回</i>
+    <img id="testImg" class="result" src="">
+    <canvas id="canvas" class="canvas"></canvas>
+    <a id="download" class="download">点击下载</a>
+    <p class="tip">（若下载不了,鼠标右键或长按图片可以另存为）</p>
+</div>
+<form id="svg-form" class="svg-form" action="http://139.129.8.246/tool/icon/test" method="post" enctype="multipart/form-data">
+    <textarea id="svg-form-code" name="svg_code"></textarea>
+</form>
 <script src="asset/lib/require/require.js" defer async="true"></script>
 <script src="asset/lib/require/require.js" data-main="asset/js/main"></script>
 </body>

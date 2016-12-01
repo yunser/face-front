@@ -22,6 +22,7 @@ define(function(require) {
 
     var $lastMenuItem; // 上一次选择的菜单项
 
+
     // 菜单项的选择事件
     var checkMenuItem = function(dom) {
 
@@ -64,25 +65,19 @@ define(function(require) {
 	    dom.scrollTop = 0;
         currentData = data; //标记当前数据大集合
 	    var html = [
-	       '<table border="1" cellspacing="0" cellpadding="1" border="1" fbordercolor="#FFF">'
+	       '<ul class="table-list">'
 	    ];
 	    for (var i = 0, d; d = data.list[i]; i++) {
-	        if (i % 3 == 0) {
-	            html.push('<tr>');
-	        }
-	        html.push('<td id="listTd_' + i + '" class="table-item" data-item="' + i + '">');
+	        html.push('<li id="listTd_' + i + '" class="table-item" data-item="' + i + '">');
 	        if (d.src) {
     	        html.push('    <img id="listItem_' + i + '" src="' + d.src + '" style="width:110px;height:110px;" />');
 	        }
 	        else if (d.bgColor) {
 	            html.push('    <div id="listItem_' + i + '" style="width:110px;height:110px;margin:auto;background:' + d.bgColor + ';"></div>');
 	        }
-            html.push('</td>');
-	        if (i % 3 == 2) {
-	            html.push('</tr>');
-	        }
+            html.push('</li>');
 	    }
-	    html.push('</table>');
+	    html.push('</ul>');
 	    dom.innerHTML = html.join('');
 	    checkListItem(data.selectedIndex);
 	    html = null;
@@ -99,6 +94,7 @@ define(function(require) {
         }
         $item.addClass('active');
         $lastItem = $item;
+
 
         var _list = list || currentData;
 	    if (_list) {
@@ -258,11 +254,11 @@ define(function(require) {
         // 在 body 中插入一個 svg
         // //svg.addPath('bg', bgData, 'bgUse', null, null, { fill: '#CCC' }); //背景
         // svg.addPath('svgBg', bgData, 'bg3'); //背景
-        // svg.addPath('body', bodyData, 'body1', '#FFF'); //身体
+        //svg.addPath('body', bodyData, 'body1', '#FFF'); //身体
         // svg.addPath('cloth', clothData, 'cloth5'); //衣服
         // svg.addPath('face', faceData, 'face20001', '#FFF'); //脸
         // svg.addPath('eyebrow', eyebrowData, 'eyebrow20012'); //眉毛
-        // svg.addPath('eye', eyeData, 'eye11'); //眼睛
+        //svg.addPath('eye', eyeData, 'eye11'); //眼睛
         // svg.addPath('mouth', mouthData, 'mouth7', '#FFF'); //嘴
         // svg.addPath('nose', noseData, 'nose20007', '#FFF'); //鼻子
         // svg.addPath('feature', featureData, 'feature20021'); //特征
@@ -271,11 +267,9 @@ define(function(require) {
         // svg.addPath('glass', glassData, 'glass10'); //眼镜
         // svg.addPath('hat', hatData, 'hat20008'); //帽子
         // svg.addPath('hobby', hobbyData, 'hobby1', '#FFF'); //手势
-        // //svg.addPath('bdBubble', bdBubbleData, 'bdBubble40057'); //板型气泡
-        // svg.addPath('bubble', bubbleData, 'bubble30'); //说话泡泡
-        // var imgSrc = svg.createDataURL();
-        // console.error(imgSrc);
-        // link.getDom('testImg').src = imgSrc;
+        //svg.addPath('bdBubble', bdBubbleData, 'bdBubble40057'); //板型气泡
+        //svg.addPath('bubble', bubbleData, 'bubble30'); //说话泡泡
+
 
 
         $(document).on('click', '.menu-item', function(e){
@@ -292,19 +286,50 @@ define(function(require) {
             setSex(sex); //更改性别
         });
 
+        var canvas;
+
         // 完成
         $('#finish').on('click', function(){
 
-            if (!confirm('确定创建?')) {
-                return false;
-            }
+            var imgSrc = svg.createDataURL();
+            //document.getElementById('testImg').src = imgSrc;
 
-            var fileHead = '<?xml version="1.0" encoding="utf-8"?>'
-                + '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">';
-            $('#svg-form-code').text(fileHead + svg.getSVGPathes());
-            $('#svg-form').submit();
-            console.log(svg.getSVGPathes());
+            canvas = document.getElementById("canvas");
+            canvas.width = 300;
+            canvas.height = 300;
 
+            // 加载图片并绘制到画布
+            var img = new Image();
+            img.src = imgSrc;
+            img.onload = function(){
+                var myctx = canvas.getContext("2d");
+                myctx.drawImage(img, 0, 0, 640, 640, 0, 0, 640 * 410 / 300, 640 * 410 / 300);
+            };
+
+            $('#result-box').show();
+            /*$('#svg-form-code').text(html);
+            $('#svg-form').submit();*/
+
+        });
+
+        // 下载
+        $('#download').on('click', function () {
+            var a = document.createElement('a');
+            a.download = 'yunser.com.png';
+            a.href = canvas.toDataURL('image/png');
+
+            var clickEvent = new MouseEvent('click', {
+                'view': window,
+                'bubbles': true,
+                'cancelable': false
+            });
+
+            a.dispatchEvent(clickEvent);
+        });
+
+        // 返回编辑器
+        $('#close').on('click', function () {
+            $('#result-box').hide();
         });
 
         initMenu([
