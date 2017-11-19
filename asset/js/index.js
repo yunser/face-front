@@ -2,18 +2,32 @@
  * 入口
  */
 
-import faceData from './data/faceData';
+// const faceData = require('./data/faceData');
+/*const faceData = require.ensure([], function(require) {
+    var mod = require('./data/faceData');
+});*/
+
 import bgData from './data/bgData';
 import bubbleData from './data/bubbleData';
 import bodyData from './data/bodyData';
 import clothData from './data/clothData';
+/*const clothData = require.ensure([], function(require) {
+    var mod = require('./data/clothData');
+});*/
 import expressData from './data/expressData';
 import eyebrowData from './data/eyebrowData';
 import eyeData from './data/eyeData';
 import featureData from './data/featureData';
 import glassData from './data/glassData';
-import hairData from './data/hairData';
-import hatData from './data/hatData';
+
+/*var hairData;
+require.ensure([], function(require) {
+    hairData = require('./data/hairData');
+});*/
+
+/*const hatData = require.ensure([], function(require) {
+    var mod = require('./data/hatData');
+});*/
 import hobbyData from './data/hobbyData';
 import noseData from './data/noseData';
 import mouthData from './data/mouthData';

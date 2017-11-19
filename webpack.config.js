@@ -1,9 +1,16 @@
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
+
 module.exports = {
-    entry: "./asset/js/index.js",
+    entry: {
+        test0: "./asset/js/index0.js",
+        test1: "./asset/js/index1.js",
+        test2: "./asset/js/index2.js",
+        test: "./asset/js/index.js"
+    },
     output: {
-        path: __dirname,
-        filename: "all.js"
+        path: path.resolve(__dirname, './build'),
+        filename: "[name].bundle.js"
     },
     module: {
         loaders: [
@@ -15,5 +22,18 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            mangle: {
+                except: ['$super', '$', 'exports', 'require', 'module', '_']
+            },
+            compress: {
+                warnings: false
+            },
+            output: {
+                comments: false,
+            }
+        })
+    ]
 }

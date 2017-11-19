@@ -182,7 +182,7 @@ export default {
         return html;
     },
     createDataURL: function() {
-        html = window.toUTF8(this.getSVGPathes());
+        var html = window.toUTF8(this.getSVGPathes());
         return 'data:image/svg+xml;base64,'+ btoa(html);
     }
 };
